@@ -1,2 +1,2 @@
-# hiahia
-hia～hia～
+# Xi
+Xi Song’s practice repo
