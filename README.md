@@ -1,2 +1,0 @@
-# hiahia
-hia～hia～
