@@ -7,19 +7,19 @@ return "blue is sky the".
 
 public class Solution {
     public String reverseWords(String s) {
-        StringBuilder r=new StringBuilder();
-        int j=s.length();
-      
-        for(int i=s.length()-1;i>=0;i--){
-            if(s.charAt(i)==' '){
-                j=i;
-            }else if( i==0||s.charAt(i-1)==' '){
-                if(r.length()!=0){
-                    r.append(' ');
-                }
-                r.append(s.substring(i,j));
-            }
-        }
-         return r.toString();
+     StringBuilder reverse=new StringBuilder();
+     int j=s.length();//not -1,in case there is only one char in the word
+     
+     for(int i=s.length()-1;i>=0;i--){
+         if(s.charAt(i)==' ') j=i;
+         else if(i==0 || s.charAt(i-1)==' '){
+             if(reverse.length()!=0){//when it is not the first one ,no ' '
+                 reverse.append(' ');
+             }
+             reverse.append( s.substring(i,j) );//substring i~j-1
+         }
+     }
+     return reverse.toString();//toString()
+     
     }
 }
