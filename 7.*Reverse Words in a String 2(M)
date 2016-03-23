@@ -1,0 +1,8 @@
+Similar to 6,with the following constrains:
+"The input string dose not contain leading or trailing spaces and the words are always separated by a single space."
+Could you do it in-place without allocating extra space?
+
+public void reverseWords(char[] s){
+      
+
+}
