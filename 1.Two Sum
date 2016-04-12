@@ -1,0 +1,30 @@
+public class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       int[] temp=null; 
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]+nums[j]==target) {
+                    System.out.println("index1="+(i+1)+",index2="+(j+1));
+                    int[] arr={i+1,j+1};
+                    return arr;
+                }
+            }
+        }
+      return temp;  
+    }
+}
+
+solution 2:
+public class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> pair=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int x=nums[i];
+            if(pair.containsKey(target-x)){
+                return new int[]{i,pair.get(target-x)};
+            }
+            pair.put(x,i);
+        }
+        throw new IllegalArgumentException("There are no 2 numbers in nums can be added to be equal to target.");
+    }
+}
