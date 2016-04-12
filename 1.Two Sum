@@ -17,14 +17,15 @@ public class Solution {
 solution 2:
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> pair=new HashMap<>();
+        Map<Integer,Integer> pair=new HashMap<>();          //Integer
         for(int i=0;i<nums.length;i++){
             int x=nums[i];
-            if(pair.containsKey(target-x)){
-                return new int[]{i,pair.get(target-x)};
+            if(pair.containsKey(target-x)){         //.containsKey()
+                return new int[]{i,pair.get(target-x)};         //new int[]{}
             }
             pair.put(x,i);
         }
         throw new IllegalArgumentException("There are no 2 numbers in nums can be added to be equal to target.");
+        //IllegalArgumentExceptiion("")
     }
 }
