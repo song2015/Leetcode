@@ -17,7 +17,7 @@ public class Solution {
         int j=s.length()-1;
         
         while(i<j){
-        while(i<j && !Character.isLetterOrDigit(s.charAt(i)) ) i++;// Character.isLetterOrDigit    
+        while(i<j && !Character.isLetterOrDigit(s.charAt(i)) ) i++;// Character.isLetterOrDigit(),i<j (防溢出，eg：input is ",.")    
         while(i<j && !Character.isLetterOrDigit(s.charAt(j)) ) j--;//s.charAt(j)
         
         if(Character.toLowerCase(s.charAt(i))!=Character.toLowerCase(s.charAt(j)) ) return false;//Character.toLowerCase()
