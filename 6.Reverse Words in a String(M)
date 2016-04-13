@@ -23,3 +23,33 @@ public class Solution {
      
     }
 }
+
+way 2:
+import java.util.Stack;
+
+public class testSelfReverseString {
+public static void main(String[] args) {
+String s="I like you.";
+System.out.println(reverseWords(s));
+}
+
+public static String reverseWords(String s) {
+
+    String[] words=s.split(" ");
+    int l=words.length;
+
+    if (l==0) return "";
+    else{
+        Stack<String> reverse=new Stack<String>();
+
+        for(int i=0;i<l;i++){
+            reverse.push(words[i]);
+        }
+
+        StringBuilder reverseWords=new StringBuilder();
+        for(int i=0;i<l;i++){
+            reverseWords.append(reverse.pop()+" ");
+        }
+        return reverseWords.toString();
+    }
+}
