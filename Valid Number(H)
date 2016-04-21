@@ -10,36 +10,39 @@ Some examples:
 
 public class Solution {
     public boolean isNumber(String s) {
-        int i = 0;
-        int n = s.length();
-        boolean isNumeric = false;
+        int l=s.length(),i=0;
+        boolean result=false;
         
-        while (i < n && Character.isWhitespace(s.charAt(i))) i++;
-        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) i++;
+        while(i<l && Character.isWhitespace(s.charAt(i))) i++;  //isWhitespace  
+        if(i<l &&( s.charAt(i)=='+' || s.charAt(i)=='-')) i++;  //must check i<l first everytime,or will have index out of bounds exception
         
-        while (i < n && Character.isDigit(s.charAt(i))) {
-             i++;
-             isNumeric = true;
+        while(i<l && Character.isDigit(s.charAt(i)) ) {
+            i++;
+            result=true;
         }
-        if (i < n && s.charAt(i) == '.') {
+        
+        if(i<l && s.charAt(i)=='.' ) {  //does not matter if there is not number after .
             i++;
-            while (i < n && Character.isDigit(s.charAt(i))) {
-            i++;
-            isNumeric = true;
+            while(i<l && Character.isDigit(s.charAt(i))){
+                i++;
+                result=true;
             }
         }
-        if (isNumeric && i < n && s.charAt(i) == 'e') {
-           i++;
-           isNumeric = false;
-           if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) i++;
-           while (i < n && Character.isDigit(s.charAt(i))) {
-                 i++;
-                 isNumeric = true;
+         
+         if(result && i<l && s.charAt(i)=='e' ) {   //there is number before e
+            i++;
+            result=false;   //there is number after e 
+            if(i<l && (s.charAt(i)=='+' || s.charAt(i)=='-') ) i++;
+            while(i<l && Character.isDigit(s.charAt(i))){
+                i++;
+                result=true;
             }
-          }
-
+        }
         
-        while (i < n && Character.isWhitespace(s.charAt(i))) i++;
-             return isNumeric && i == n;
+        while(i<l && Character.isWhitespace(s.charAt(i))) i++;
+        
+        return result && i==l;// in case of "1    4"
+        
+        
     }
 }
