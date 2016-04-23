@@ -9,15 +9,15 @@ public class Solution {
            
             int len1=longthOfPalindrome(s,i,i);
             int len2=longthOfPalindrome(s,i,i+1);
-            int len=Math.max(len1,len2); //1.Math.max 
+            int len=Math.max(len1,len2);  
             
             if(len>end-start){
-                start=i-(len-1)/2;
+                start=i-(len-1)/2;      //(len-1)   in case of out of range
                 end=i+len/2;
             }
         }
         
-        return s.substring(start,end+1);//2.substring
+        return s.substring(start,end+1);        // substring(include,not include)
     }
     
     int longthOfPalindrome(String s, int low,int high){
@@ -28,6 +28,6 @@ public class Solution {
             high++;
         }
         
-        return high-low-1;
+        return high-low-1;      // (high-1)-(low+1)+1
     }
 }
