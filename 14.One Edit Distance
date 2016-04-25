@@ -10,3 +10,33 @@ Hint:
    If m ≠ n, you do not have to consider the delete operation. Just consider the insert operation in T.
    
    
+package za;
+
+public class oneEditDistance {
+
+	public static void main(String[] args) {
+		String a="This is a test text.";
+		String b="This is a test text1.";
+		String c="This is a test text2.";
+		String d="This is a text test";
+		
+		System.out.println(isOneEditDistance(a,b));
+		System.out.println(isOneEditDistance(a,d));
+		System.out.println(isOneEditDistance(c,d));
+		
+
+	}
+	
+	public static boolean isOneEditDistance(String s, String t) {
+		   int m = s.length(), n = t.length();
+		   if (m > n) return isOneEditDistance(t, s);
+		   if (n - m > 1) return false;
+		   int i = 0, shift = n - m;
+		   while (i < m && s.charAt(i) == t.charAt(i)) i++;
+		   if (i == m) return shift > 0;
+		   if (shift == 0) i++;
+		   while (i < m && s.charAt(i) == t.charAt(i + shift)) i++;
+		   return i == m;
+		}
+
+}
