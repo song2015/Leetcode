@@ -1,0 +1,38 @@
+You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode a = l1;
+        ListNode b = l2;
+        ListNode temp = new ListNode(0);
+        ListNode r=temp;
+        int carry=0;
+        
+        while(a!=null || b!=null){
+            int x=(a!=null)?a.val:0;
+            int y=(b!=null)?b.val:0;
+            int sum=x+y+carry;
+            temp.next=new ListNode(sum%10);
+            carry=sum/10;
+            temp=temp.next;
+            if(a!=null) a=a.next;
+            if(b!=null) b=b.next;
+        }
+        
+        if(carry>0) temp.next=new ListNode(carry);
+        
+        return r.next;
+    }
+}
