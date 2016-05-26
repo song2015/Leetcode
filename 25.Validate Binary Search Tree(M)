@@ -38,3 +38,18 @@ public class Solution {
         return node.val > x && subtreeGreater(node.left,x) && subtreeGreater(node.right,x) ;
     }
 }
+
+Solution 2:O(n) runtime,O(n) stack space
+
+public class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return Valid(root, null, null);
+    }
+    
+    public boolean Valid(TreeNode p,int low,int high){
+        if(p == null) return true;
+        return (low==null || p.val > low) && (high==null || p.val < high) &&
+                Valid(p.left, low, p.val) && Valid(p.right,p.val,high);
+        
+    }
+}
