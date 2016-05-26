@@ -43,7 +43,7 @@ Solution 2:O(n) runtime,O(n) stack space
 
 public class Solution {
     public boolean isValidBST(TreeNode root) {
-        return Valid(root, null, null);
+        return Valid(root, null, null);    //use null to represent the infinity. Integer.MIN_VALUE, Integer.MAX_VALUE
     }
     
     public boolean Valid(TreeNode p,int low,int high){
