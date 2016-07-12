@@ -1,0 +1,48 @@
+31.Binary Tree Maximum Path Sum
+
+Given a binary tree, find the maximum path sum.
+
+For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. 
+The path does not need to go through the root.
+
+For example:
+Given the below binary tree,
+
+       1
+      / \
+     2   3
+Return 6.
+
+
+Hint:
+Anytime when you found that doing top down approach uses a lot of repeated calculation, 
+bottom up approach usually is able to be more efficient.
+
+答
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    int m = Integer.MIN_VALUE;
+    
+    public int maxPathSum(TreeNode root) {
+        findMax(root);
+        return m;
+    }
+    
+    public int findMax(TreeNode node){
+        if(node == null) return 0;
+        int left = findMax(node.left);
+        int right = findMax(node.right);
+        m = Math.max(node.val+left+right , m);
+        int ret = node.val+Math.max(left,right);
+        return ret>0 ? ret : 0;
+
+    }
+}
