@@ -1,0 +1,13 @@
+33.Single Number
+
+Given an array of integers, every element appears twice except for one. Find that single one.
+
+
+答
+public int singleNumber(int[] A) {
+   int num = 0;
+   for (int x : A) {
+      num ^= x; 
+   }
+  return num; 
+}
